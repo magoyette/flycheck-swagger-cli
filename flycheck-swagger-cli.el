@@ -54,7 +54,7 @@ buffer to find the swagger 2.0 element."
 (flycheck-define-checker swagger-cli
   "A checker that uses swagger-cli to validate OpenAPI 2 and Swagger files.
 See URL `https://github.com/BigstickCarpet/swagger-cli'."
-  :command ("swagger" "validate" source-original)
+  :command ("swagger-cli" "validate" source-original)
   :predicate
   (lambda ()
     (string-match
