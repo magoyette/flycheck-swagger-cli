@@ -1,11 +1,11 @@
-;;; flycheck-swagger-cli --- Flycheck checker for swagger-cli.
+;;; flycheck-swagger-cli.el --- Flycheck checker for swagger-cli.
 
-;; Copyright (C) 2017 Marc-André Goyette
+;; Copyright (C) 2017-2018 Marc-André Goyette
 ;; Author: Marc-André Goyette <goyette.marcandre@gmail.com>
 ;; URL: https://github.com/magoyette/flycheck-swagger-cli
 ;; Version: 0.1.0
 ;; Package-Requires: ((emacs "25"))
-;; Keywords: swagger
+;; Keywords: languages
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -39,16 +39,16 @@
 
 (require 'flycheck)
 
-(defgroup swagger-cli nil
+(defgroup flycheck-swagger-cli nil
   "Validate swagger files with swagger-cli."
   :group 'swagger
-  :prefix "swagger-cli-")
+  :prefix "flycheck-swagger-cli-")
 
-(defcustom swagger-cli-predicate-regexp-match-limit 4000
+(defcustom flycheck-swagger-cli-predicate-regexp-match-limit 4000
   "Defines the number of characters that will be scanned at the beginning of a
 buffer to find the swagger 2.0 element."
   :type 'integer
-  :group 'swagger-cli)
+  :group 'flycheck-swagger-cli)
 
 ;;;###autoload
 (flycheck-define-checker swagger-cli
@@ -61,7 +61,7 @@ See URL `https://github.com/BigstickCarpet/swagger-cli'."
      "\\(.\\|\n\\)*\\([[:space:]]\\|\"\\|\\'\\)*swagger\\([[:space:]]\\|\"\\|\\'\\)*:[[:space:]]*[\"\\']2.0[\"\\'].*"
      ;; Need to avoid stack overflow for multi-line regex
      (buffer-substring 1 (min (buffer-size)
-                              swagger-cli-predicate-regexp-match-limit))))
+                              flycheck-swagger-cli-predicate-regexp-match-limit))))
   :error-patterns
   (;; js-yaml error with position
    (error line-start
