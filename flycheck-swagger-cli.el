@@ -79,6 +79,16 @@ See URL `https://github.com/BigstickCarpet/swagger-cli'."
           (message
            (one-or-more not-newline))
           line-end)
+   ;; Errors like "duplicated mapping key at line 63, column -692:"
+   ;; The column must be ignore, since it can be negative
+   (error line-start
+          (message
+           (not space)
+           (one-or-more not-newline))
+          " at line " line
+          (one-or-more not-newline)
+          ":"
+          line-end)
    (error line-start
           blank
           blank
