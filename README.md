@@ -2,7 +2,9 @@
 
 An Emacs Flycheck checker for OpenAPI 2 and Swagger files that uses [swagger-cli](https://github.com/BigstickCarpet/swagger-cli). YAML files and JSON files are both supported.
 
-flycheck-swagger-cli is still under initial development and might not be stable.
+This project is archived and will no longer be maintained.
+
+flycheck-swagger-cli was an initial implementation and might not be stable.
 
 ## Configuration
 
